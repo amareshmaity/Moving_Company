@@ -1,0 +1,21 @@
+#slide1{
+    height: 90vh;
+    background: linear-gradient(to top, 
+    rgb(0,0,0,0.7), rgb(0,0,0,0.3)), url("/images/carousel/img1.png") 
+    top left /100% 100% no-repeat ; 
+    border: 1px solid black; 
+}
+#slide2{
+    height: 90vh;
+    background: linear-gradient(to top, 
+    rgb(0,0,0,0.8), rgb(0,0,0,0.3)), url("/images/carousel/img2.png") 
+    top left /100% 100% no-repeat ; 
+    border: 1px solid black; 
+}
+#slide3{
+    height: 90vh;
+    background: linear-gradient(to top, 
+    rgb(0,0,0,0.8), rgb(0,0,0,0.3)), url("/images/carousel/img3.png") 
+    top left /100% 100% no-repeat ; 
+    border: 1px solid black; 
+}

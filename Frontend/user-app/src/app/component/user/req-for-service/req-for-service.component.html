@@ -1,0 +1,26 @@
+
+@if(servicesData){
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            @for(service of servicesData; track service._id){
+                <div class="col-5">
+                    <div class="card" style="width: 20rem; margin-top: 20px; margin-bottom: 20px;">
+                        <div style="height: 200px; overflow-y: hidden;">
+                            <img [src]="service.imageURL" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-title">{{service.serviceTitle}}</h5>
+                          <p class="card-text">{{service.serviceDescription}}</p>
+                          <p><strong>Available in:</strong> {{service.serviceAvailability}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button (click)="bookService(service._id)" class="btn btn-primary">Book Service</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}
+

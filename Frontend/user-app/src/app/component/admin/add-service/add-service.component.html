@@ -1,0 +1,46 @@
+<div class="row justify-content-center form-wrapper">
+    <form #addService="ngForm" class="col-md-6 gx-3" (ngSubmit)="onSubmit(addService)">
+
+        <div>
+            <label for="serviceTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="serviceTitle" name="serviceTitle" #serviceTitle="ngModel" ngModel placeholder="Title" required>
+        </div>
+    
+        <div>
+            <label for="serviceDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="serviceDescription" name="serviceDescription" #serviceDescription="ngModel" ngModel placeholder="Add description of service" required></textarea>
+            <div class="invalid-feedback">
+                Please enter a service description in the textarea.
+            </div>
+        </div>
+       
+        <!-- Service Availability -->
+        <div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="serviceAvailability">Service Availability:</label>
+                <select class="form-select" id="serviceAvailability" name="serviceAvailability" #serviceAvailability="ngModel" ngModel required>
+                    <option value="All Cities">All Cities</option>
+                    <option value="Specific Cities">Specific Cities</option>
+                </select>
+              </div>
+        </div>
+
+        
+        <div>
+            <label for="imageURL" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="imageURL" name="imageURL" #imageURL="ngModel" ngModel placeholder="Image URL" required>
+        </div>
+        
+        <div class="row justify-content-evenly">
+            <button type="button" class="btn btn-secondary col-md-5" (click)="resetForm(addService)">Reset</button>
+            <button type="submit" class="btn btn-success col-md-5" [disabled]="!addService.form.valid">Submit</button>
+        </div>
+    
+    </form>
+    
+</div>    
+
+
+  
+
+

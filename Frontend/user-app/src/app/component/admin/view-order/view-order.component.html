@@ -1,0 +1,54 @@
+@if(isShow){
+    @if(viewOrderData){
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <table style="margin-top: 20px; border-collapse: separate; border-spacing: 0 10px;">
+                    <thead style="border-bottom: 1px solid black; font-size: 20px">
+                        <tr>
+                            <th>User Name</th>
+                            <th>Click to View Order Details</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        @for(user of viewOrderData; track user._id){
+                            <tr>
+                                <td><strong>{{user.name}}</strong></td>
+                                <td><button class="btn btn-success" style="padding:5px 50px 5px" (click)="viewOrderDetails(user)">View</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+    }
+} @else {
+    @if(orderDetailsData){
+        <div class="container text-center">
+            <h5 class="mt-3">Services booked by User: {{userName}}</h5>
+            <div class="row justify-content-center">
+                @for(service of orderDetailsData; track service._id){
+                    <div class="col-5">
+                        <div class="card" style="width: 20rem; margin-top: 20px; margin-bottom: 20px;">
+                            <div style="height: 200px; overflow-y: hidden;">
+                                <img [src]="service.imageURL" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title">{{service.serviceTitle}}</h5>
+                              <p class="card-text">{{service.serviceDescription}}</p>
+                              <p><strong>Available in:</strong> {{service.serviceAvailability}}</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <button class="btn btn-primary" (click)="goBack()" style="width: 150px; margin: 20px 100% auto 0;">Go Back</button>
+        </div>
+    
+    }
+    
+}
+
+
+
+

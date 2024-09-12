@@ -1,0 +1,146 @@
+<div class="container" style="padding:55px">
+    <h4>Sign up as User</h4>
+    <form #userSignup="ngForm" (ngSubmit)="onSubmit(userSignup)" class="row g-3 mt-3" style="border: 1px solid #ddd; padding: 0 25px 25px;">
+        <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="userSignupDetails.name" #name="ngModel" required minlength="3" maxlength="50">
+    
+            @if(name.invalid && (name.dirty || name.touched)){
+                <div class="text-danger">
+                    @if(name.hasError('required')){
+                        <div>Name is required</div>
+                    }
+                    @if(name.hasError('minlength')){
+                        <div>Name must be at least 3 characters long</div>
+                    }
+                    @if(name.hasError('maxlength')){
+                        <div>Name must be less than 50 characters long</div>
+                    }
+                </div>
+            }
+        </div>
+        
+        <div class="col-md-6">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="age" name="age" ngModel #age="ngModel" [(ngModel)]="userSignupDetails.age" required min="0" max="120">
+    
+            @if(age.invalid && (age.dirty || age.touched)){
+                <div class="text-danger">
+                    @if(age.hasError('required')){
+                        <div>Age is required</div>
+                    }
+                    @if(name.hasError('minlength') || name.hasError('maxlength') ){
+                        <div>Age must be between 0 and 120</div>
+                    }
+                </div>
+            }
+        </div>
+        
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="userSignupDetails.email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            
+            @if(email.invalid && (email.dirty || email.touched)){
+                <div class="text-danger">
+                    @if(email.hasError('required')){
+                        <div>Email is required</div>
+                    }
+                    @if(email.errors?.['pattern']){
+                        <div>This is not a valid Email!!!</div>
+                    }
+                </div>
+            }
+        </div>
+    
+        <div class="col-md-6">
+            <label for="mobile" class="form-label">Mobile No</label>
+            <input type="tel" class="form-control" id="mobile" name="mobile" [(ngModel)]="userSignupDetails.mobile" #mobile="ngModel" pattern="[0-9]{10}" required>
+            @if(mobile.invalid && (mobile.dirty || mobile.touched)){
+                <div class="text-danger">
+                    @if(mobile.hasError('required')){
+                        <div>Mobile is required</div>
+                    }
+                    @if(mobile.errors?.['pattern']){
+                        <div>Mobile number must be exactly 10 digits.</div>
+                    }
+                </div>
+            }
+        </div>
+    
+        <div class="col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userSignupDetails.password" #password="ngModel" required>
+    
+            @if(password.invalid && (password.dirty || password.touched)){
+                <div class="text-danger">
+                    @if(password.hasError('required')){
+                        <div>Password is required</div>
+                    }
+                </div>
+            }
+        </div>
+      
+        <div class="row g-3">
+            <h5>Address</h5>
+            <div class="col-md-6">
+                <label for="street" class="form-label">Street</label>
+                <input type="text" class="form-control" id="street" name="addressStreet" [(ngModel)]="userSignupDetails.addressStreet" #addressStreet="ngModel" required minlength="3" maxlength="100">
+        
+                @if(addressStreet.invalid && (addressStreet.dirty || addressStreet.touched)){
+                <div class="text-danger">
+                    @if(addressStreet.hasError('required')){
+                        <div>Street is required</div>
+                    }
+                    @if(addressStreet.hasError('minlength')){
+                        <div>Street must be at least 3 characters long</div>
+                    }
+                    @if(addressStreet.hasError('maxlength')){
+                        <div>Street must be less than 50 characters long</div>
+                    }
+                </div>
+            }
+            </div>
+            <div class="col-md-3">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="addressCity" [(ngModel)]="userSignupDetails.addressCity" #addressCity="ngModel" required minlength="2" maxlength="50">
+        
+                @if(addressCity.invalid && (addressCity.dirty || addressCity.touched)){
+                <div class="text-danger">
+                    @if(addressCity.hasError('required')){
+                        <div>City is required</div>
+                    }
+                    @if(addressCity.hasError('minlength')){
+                        <div>City must be at least 2 characters long</div>
+                    }
+                    @if(addressCity.hasError('maxlength')){
+                        <div>City must be less than 50 characters long</div>
+                    }
+                </div>
+            }
+            </div>
+            <div class="col-md-3">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" name="addressState" [(ngModel)]="userSignupDetails.addressState" #addressState="ngModel" required minlength="2" maxlength="100">
+        
+                @if(addressState.invalid && (addressState.dirty || addressState.touched)){
+                <div class="text-danger">
+                    @if(addressState.hasError('required')){
+                        <div>State is required</div>
+                    }
+                    @if(addressState.hasError('minlength')){
+                        <div>State must be at least 2 characters long</div>
+                    }
+                    @if(addressState.hasError('maxlength')){
+                        <div>State must be less than 50 characters long</div>
+                    }
+                </div>
+            }
+            </div>
+        </div>
+      
+        <div class="col-12">
+            <button type="submit" [disabled]="!userSignup.form.valid" class="btn btn-primary">Sign up</button>
+        </div>  
+    </form>
+</div>
+  

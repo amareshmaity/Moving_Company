@@ -1,0 +1,25 @@
+@if(inquiryData){
+    <div class="container">
+        <div class="row justify-content-center">
+            @for(inquiry of inquiryData; track inquiry._id){
+                <div class="col-5">
+                    <div class="card" style="width: 20rem; margin-top: 20px; margin-bottom: 20px;">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h5 class="card-title text-center">Inquiry</h5>
+                            </div>
+
+                            <p class="card-text">Inquiry By : {{inquiry.userName}}</p>
+                            <p class="card-text">Date: {{inquiry.createdAt.slice(0, 10)}} </p>
+                            <p class="card-text"><strong>Inquiry Message:</strong> <br/>{{inquiry.inquiryMessage}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}
+
+

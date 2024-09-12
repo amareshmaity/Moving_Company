@@ -1,0 +1,23 @@
+.form-wrapper{
+    margin-top: 50px;
+}
+
+.form-wrapper form{
+    background-color: #ddd;
+    padding: 20px;
+}
+
+.form-wrapper form div{
+    margin-top: 15px;
+}
+
+.form-wrapper form div:last-child{
+    margin-top: 35px;
+}
+.form-wrapper form div label{
+    font-weight: bold;
+    color: rgb(61, 61, 61);
+    font-size: 17px;
+}
+
+

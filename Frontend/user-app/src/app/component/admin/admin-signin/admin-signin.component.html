@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row justify-content-center" style="padding: 180px 0;">
+        <div class="col-5">
+            <h4>Sign in as Admin</h4>
+            <form #adminSignin="ngForm" (ngSubmit)="onSubmit(adminSignin)" style="border: 1px solid #ddd; padding: 25px;">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="adminSigninDetails.email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                            
+                    @if(email.invalid && (email.dirty || email.touched)){
+                        <div class="text-danger">
+                            @if(email.hasError('required')){
+                                <div>Email is required</div>
+                            }
+                            @if(email.errors?.['pattern']){
+                                <div>This is not a valid Email!!!</div>
+                            }
+                        </div>
+                    }
+                </div>
+    
+            
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="adminSigninDetails.password" #password="ngModel" required>
+                            
+                    @if(password.invalid && (password.dirty || password.touched)){
+                        <div class="text-danger">
+                            @if(password.hasError('required')){
+                                <div>Password is required</div>
+                            }
+                        </div>
+                    }
+                </div>
+    
+            
+                <div class="col-12 mb-3">
+                    <button type="submit" class="btn btn-primary" [disabled]="!adminSignin.form.valid">Sign In</button>
+                </div>  
+                
+                <div class="col-12">
+                    If you don't have any account please <a routerLink="/admin/signup"><strong>Signup</strong></a>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+</div>
